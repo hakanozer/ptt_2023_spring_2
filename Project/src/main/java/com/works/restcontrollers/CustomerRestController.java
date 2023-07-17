@@ -22,11 +22,7 @@ public class CustomerRestController {
 
     @PostMapping("/register")
     public ResponseEntity register(@Valid @RequestBody Customer customer, BindingResult result) {
-        if (result.hasErrors() ) {
-            return new ResponseEntity(result.getFieldErrors(), HttpStatus.BAD_REQUEST);
-        }
-        customerService.register(customer);
-        return new ResponseEntity(customer, HttpStatus.OK);
+        return customerService.register(customer, result);
     }
 
 }
