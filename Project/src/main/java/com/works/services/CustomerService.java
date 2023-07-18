@@ -2,6 +2,7 @@ package com.works.services;
 
 import com.works.entities.Customer;
 import com.works.repositories.CustomerRepository;
+import com.works.utils.Rest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,20 +19,19 @@ public class CustomerService {
 
     public ResponseEntity register(Customer customer, BindingResult result ) {
         if (result.hasErrors() ) {
-            return new ResponseEntity(result.getFieldErrors(), HttpStatus.BAD_REQUEST);
+            return Rest.fail(result.getFieldErrors(),HttpStatus.BAD_REQUEST );
         }
         try {
             customerRepository.save(customer);
-            return new ResponseEntity( customer, HttpStatus.OK );
+            return Rest.success(customer);
         }catch (Exception ex) {
-            return new ResponseEntity( "Unique index or primary key email", HttpStatus.BAD_REQUEST );
+            return Rest.fail("Unique index or primary key email",HttpStatus.BAD_REQUEST );
         }
-
     }
 
     public ResponseEntity list() {
         List<Customer> customerList = customerRepository.findAll();
-        return new ResponseEntity(customerList, HttpStatus.OK);
+        return Rest.success(customerList);
     }
 
 
