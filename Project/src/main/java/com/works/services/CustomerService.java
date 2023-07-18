@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CustomerService {
@@ -26,5 +28,11 @@ public class CustomerService {
         }
 
     }
+
+    public ResponseEntity list() {
+        List<Customer> customerList = customerRepository.findAll();
+        return new ResponseEntity(customerList, HttpStatus.OK);
+    }
+
 
 }
