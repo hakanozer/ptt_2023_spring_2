@@ -37,4 +37,9 @@ public class CustomerRestController {
         return customerService.update(customer);
     }
 
+    @DeleteMapping("/delete/{stCid}")
+    public ResponseEntity delete(@PathVariable String stCid) {
+        return customerService.delete(stCid);
+    }
+
 }

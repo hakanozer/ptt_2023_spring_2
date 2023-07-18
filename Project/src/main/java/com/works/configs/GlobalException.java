@@ -25,9 +25,6 @@ public class GlobalException {
         return Rest.fail( parseValidError(ex.getFieldErrors()), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(Exception.class)
-
-
 
     private Object parseValidError(List<FieldError> fieldErrors) {
         List ls = new ArrayList();

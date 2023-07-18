@@ -64,4 +64,20 @@ public class CustomerService {
         }
     }
 
+
+    public ResponseEntity delete( String stCid ) {
+        try {
+            long cid = Long.parseLong(stCid);
+            Optional<Customer> optionalCustomer = customerRepository.findById(cid);
+            if (optionalCustomer.isPresent()) {
+                customerRepository.deleteById(cid);
+                return Rest.success( optionalCustomer.get() );
+            }else {
+                return Rest.fail(stCid + " Customer Not Found!", HttpStatus.BAD_REQUEST);
+            }
+        }catch (Exception ex) {
+            return Rest.fail(ex.getStackTrace()[0].getClassName() + " " + ex.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }
