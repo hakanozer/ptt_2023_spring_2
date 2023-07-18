@@ -27,5 +27,14 @@ public class CustomerRestController {
         return customerService.list();
     }
 
+    @GetMapping("/single/{stCid}")
+    public ResponseEntity single(@PathVariable String stCid) {
+        return customerService.single(stCid);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity update( @Valid @RequestBody Customer customer ) {
+        return customerService.update(customer);
+    }
 
 }

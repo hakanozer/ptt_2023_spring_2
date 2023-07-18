@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -34,5 +35,33 @@ public class CustomerService {
         return Rest.success(customerList);
     }
 
+    public ResponseEntity single( String stCid ) {
+        try {
+            long cid = Long.parseLong(stCid);
+            Optional<Customer> optionalCustomer = customerRepository.findById(cid);
+            if (optionalCustomer.isPresent()) {
+                return Rest.success( optionalCustomer.get() );
+            }else {
+                return Rest.fail("Customer Not Found!", HttpStatus.BAD_REQUEST);
+            }
+        }catch (Exception ex) {
+            return Rest.fail(ex.getStackTrace()[0].getClassName() + " " + ex.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+    public ResponseEntity update( Customer customer ) {
+        Optional<Customer> optionalCustomer = customerRepository.findById(customer.getCid());
+        if (optionalCustomer.isPresent()) {
+            try {
+                customerRepository.saveAndFlush(customer);
+                return Rest.success(customer);
+            }catch (Exception ex) {
+                return Rest.fail("Unique index or primary key email",HttpStatus.BAD_REQUEST );
+            }
+        }else {
+            return Rest.fail(customer.getCid() + ", Not Found", HttpStatus.BAD_REQUEST);
+        }
+    }
 
 }
