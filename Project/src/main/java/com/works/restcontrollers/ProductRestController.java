@@ -26,8 +26,8 @@ public class ProductRestController {
     }
 
     @GetMapping("/list/{cid}")
-    public ResponseEntity all(@PathVariable Long cid) {
-        return productService.all(cid);
+    public ResponseEntity all(@PathVariable Long cid, @RequestParam(defaultValue = "0") int page) {
+        return productService.all(cid, page);
     }
 
     @GetMapping("/search")

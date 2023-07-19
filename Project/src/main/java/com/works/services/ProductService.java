@@ -30,8 +30,10 @@ public class ProductService {
         return Rest.success(products);
     }
 
-    public ResponseEntity all(Long cid) {
-        List<IProCat> list = productRepository.joinPro(cid);
+    public ResponseEntity all(Long cid, int page ) {
+        Sort sort = Sort.by("price").descending();
+        Pageable pageable = PageRequest.of(page, 10, sort);
+        Page<IProCat> list = productRepository.joinPro(cid, pageable);
         return Rest.success(list);
     }
 

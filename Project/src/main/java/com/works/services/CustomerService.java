@@ -17,12 +17,14 @@ import java.util.Optional;
 public class CustomerService {
 
     final CustomerRepository customerRepository;
+    final TinkEncDec tinkEncDec;
 
     public ResponseEntity register(Customer customer, BindingResult result ) {
         if (result.hasErrors() ) {
             return Rest.fail(result.getFieldErrors(),HttpStatus.BAD_REQUEST );
         }
         try {
+            customer.setPassword( tinkEncDec.encrypt(customer.getPassword()) );
             customerRepository.save(customer);
             return Rest.success(customer);
         }catch (Exception ex) {
@@ -79,5 +81,7 @@ public class CustomerService {
             return Rest.fail(ex.getStackTrace()[0].getClassName() + " " + ex.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
+    
 
 }
