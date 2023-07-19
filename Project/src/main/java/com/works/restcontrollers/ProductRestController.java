@@ -30,4 +30,12 @@ public class ProductRestController {
         return productService.all(cid);
     }
 
+    @GetMapping("/search")
+    public ResponseEntity search(
+            @RequestParam(defaultValue = "") String title,
+            @RequestParam(defaultValue = "0") int page
+    ) {
+        return productService.search(title, page);
+    }
+
 }
