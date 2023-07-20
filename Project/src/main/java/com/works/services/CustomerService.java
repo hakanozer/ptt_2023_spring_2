@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,7 @@ public class CustomerService {
 
     final CustomerRepository customerRepository;
     final TinkEncDec tinkEncDec;
+    final HttpServletRequest req;
 
     public ResponseEntity register(Customer customer, BindingResult result ) {
         if (result.hasErrors() ) {
@@ -82,6 +84,18 @@ public class CustomerService {
         }
     }
 
+    public ResponseEntity login( Customer customer ) {
+        Optional<Customer> optionalCustomer = customerRepository.findByEmailEquals(customer.getEmail());
+        if (optionalCustomer.isPresent()) {
+            Customer c = optionalCustomer.get();
+            String plaintPassword = tinkEncDec.decrypt(c.getPassword());
+            if ( plaintPassword.equals(customer.getPassword()) ){
+                req.getSession().setAttribute("customer", c);
+                return Rest.success(c);
+            }
+        }
+        return Rest.fail("Email or Password Fail!", HttpStatus.BAD_REQUEST);
+    }
 
 
 }

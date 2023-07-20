@@ -42,4 +42,9 @@ public class CustomerRestController {
         return customerService.delete(stCid);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity login( @RequestBody Customer customer ) {
+        return customerService.login(customer);
+    }
+
 }
