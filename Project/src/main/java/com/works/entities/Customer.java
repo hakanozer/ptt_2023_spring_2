@@ -1,14 +1,17 @@
 package com.works.entities;
 
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.*;
 
 @Entity
 @Data
 //@Table(name = "customerx")
-public class Customer {
+public class Customer extends Base {
 
     @Id
     //@Column(name = "cidx")

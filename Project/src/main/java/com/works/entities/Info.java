@@ -1,5 +1,6 @@
 package com.works.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -22,4 +23,14 @@ public class Info {
     private String agent;
     private Date date;
 
+    public Info() {
+    }
+
+    public Info(String sessionId, String email, String url, String agent, Date date) {
+        this.sessionId = sessionId;
+        this.email = email;
+        this.url = url;
+        this.agent = agent;
+        this.date = date;
+    }
 }
