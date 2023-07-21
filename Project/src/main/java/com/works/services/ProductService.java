@@ -5,6 +5,8 @@ import com.works.projections.IProCat;
 import com.works.repositories.ProductRepository;
 import com.works.utils.Rest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,9 +21,11 @@ import java.util.List;
 public class ProductService {
 
     final ProductRepository productRepository;
+    final CacheManager cacheManager;
 
     public ResponseEntity add(Product product) {
         productRepository.save(product);
+        cacheManager.getCache("product").clear();
         return Rest.success(product);
     }
 
@@ -30,6 +34,7 @@ public class ProductService {
         return Rest.success(products);
     }
 
+    @Cacheable("product")
     public ResponseEntity all(Long cid, int page ) {
         Sort sort = Sort.by("price").descending();
         Pageable pageable = PageRequest.of(page, 10, sort);

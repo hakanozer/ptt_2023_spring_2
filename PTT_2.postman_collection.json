@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "aa790e3d-696a-478c-99c2-6f7cc3b5f54e",
+		"name": "PTT_2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1939021"
+	},
+	"item": [
+		{
+			"name": "customer/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Ali Bilsin\",\n    \"email\": \"ali@mail.com\",\n    \"password\": \"12345\",\n    \"age\": 25\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/customer/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"customer",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customer/list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/customer/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"customer",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customer/single/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/customer/single/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"customer",
+						"single",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customer/update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cid\": 1,\n    \"name\": \"Serkan Bilsin\",\n    \"email\": \"serkan@mail.com\",\n    \"password\": \"12345\",\n    \"age\": 23\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/customer/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"customer",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customer/delete/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/customer/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"customer",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"TYZ\",\n   \"price\": 310000,\n   \"categories\": [\n    { \"cid\": 1 }\n   ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/product/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"product",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product/addAll",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"title\": \"iPhone 12\",\n        \"price\": 57599,\n        \"categories\": [\n            {\n                \"cid\": 2\n            }\n        ]\n    },\n    {\n        \"title\": \"Samsung Galaxy S21\",\n        \"price\": 28999,\n        \"categories\": [\n            {\n                \"cid\": 3\n            }\n        ]\n    },\n    {\n        \"title\": \"Sony PlayStation 5\",\n        \"price\": 57999,\n        \"categories\": [\n            {\n                \"cid\": 1\n            }\n        ]\n    },\n    {\n        \"title\": \"Nintendo Switch\",\n        \"price\": 18999,\n        \"categories\": [\n            {\n                \"cid\": 2\n            }\n        ]\n    },\n    {\n        \"title\": \"Dell XPS 13\",\n        \"price\": 71999,\n        \"categories\": [\n            {\n                \"cid\": 3\n            }\n        ]\n    },\n    {\n        \"title\": \"Apple Watch Series 6\",\n        \"price\": 16999,\n        \"categories\": [\n            {\n                \"cid\": 3\n            }\n        ]\n    },\n    {\n        \"title\": \"LG OLED TV\",\n        \"price\": 64999,\n        \"categories\": [\n            {\n                \"cid\": 1\n            }\n        ]\n    },\n    {\n        \"title\": \"Microsoft Surface Laptop\",\n        \"price\": 78999,\n        \"categories\": [\n            {\n                \"cid\": 1\n            }\n        ]\n    },\n    {\n        \"title\": \"Bose Noise Cancelling Headphones\",\n        \"price\": 15999,\n        \"categories\": [\n            {\n                \"cid\": 3\n            }\n        ]\n    },\n    {\n        \"title\": \"Canon EOS 5D Mark IV\",\n        \"price\": 199999,\n        \"categories\": [\n            {\n                \"cid\": 2\n            }\n        ]\n    },\n    {\n        \"title\": \"Nike Air Max\",\n        \"price\": 7999,\n        \"categories\": [\n            {\n                \"cid\": 1\n            }\n        ]\n    },\n    {\n        \"title\": \"GoPro Hero 9 Black\",\n        \"price\": 31999,\n        \"categories\": [\n            {\n                \"cid\": 3\n            }\n        ]\n    },\n    {\n        \"title\": \"Sony WH-1000XM4\",\n        \"price\": 21999,\n        \"categories\": [\n            {\n                \"cid\": 2\n            }\n        ]\n    },\n    {\n        \"title\": \"Apple MacBook Pro\",\n        \"price\": 128999,\n        \"categories\": [\n            {\n                \"cid\": 2\n            }\n        ]\n    },\n    {\n        \"title\": \"Samsung QLED TV\",\n        \"price\": 84999,\n        \"categories\": [\n            {\n                \"cid\": 1\n            }\n        ]\n    },\n    {\n        \"title\": \"Sony Alpha A7 III\",\n        \"price\": 89999,\n        \"categories\": [\n            {\n                \"cid\": 1\n            }\n        ]\n    },\n    {\n        \"title\": \"Fitbit Versa 3\",\n        \"price\": 9999,\n        \"categories\": [\n            {\n                \"cid\": 3\n            }\n        ]\n    },\n    {\n        \"title\": \"Microsoft Xbox Series X\",\n        \"price\": 54999,\n        \"categories\": [\n            {\n                \"cid\": 2\n            }\n        ]\n    },\n    {\n        \"title\": \"Samsung Galaxy Watch\",\n        \"price\": 19999,\n        \"categories\": [\n            {\n                \"cid\": 3\n            }\n        ]\n    },\n    {\n        \"title\": \"LG UltraGear Gaming Monitor\",\n        \"price\": 35999,\n        \"categories\": [\n            {\n                \"cid\": 1\n            }\n        ]\n    },\n    {\n        \"title\": \"Bose SoundLink Revolve+\",\n        \"price\": 18999,\n        \"categories\": [\n            {\n                \"cid\": 1\n            }\n        ]\n    },\n    {\n        \"title\": \"Sony WH-1000XM3\",\n        \"price\": 19999,\n        \"categories\": [\n            {\n                \"cid\": 3\n            }\n        ]\n    },\n    {\n        \"title\": \"Apple iPad Air\",\n        \"price\": 57999,\n        \"categories\": [\n            {\n                \"cid\": 1\n            }\n        ]\n    },\n    {\n        \"title\": \"Samsung Galaxy Buds Pro\",\n        \"price\": 9999,\n        \"categories\": [\n            {\n                \"cid\": 3\n            }\n        ]\n    },\n    {\n        \"title\": \"Nintendo Switch Lite\",\n        \"price\": 11999,\n        \"categories\": [\n            {\n                \"cid\": 2\n            }\n        ]\n    },\n    {\n        \"title\": \"Canon EOS R6\",\n        \"price\": 139999,\n        \"categories\": [\n            {\n                \"cid\": 3\n            }\n        ]\n    },\n    {\n        \"title\": \"Nike Air Force 1\",\n        \"price\": 6999,\n        \"categories\": [\n            {\n                \"cid\": 1\n            }\n        ]\n    },\n    {\n        \"title\": \"GoPro Hero 8 Black\",\n        \"price\": 24999,\n        \"categories\": [\n            {\n                \"cid\": 3\n            }\n        ]\n    },\n    {\n        \"title\": \"Sony WF-1000XM4\",\n        \"price\": 24999,\n        \"categories\": [\n            {\n                \"cid\": 2\n            }\n        ]\n    },\n    {\n        \"title\": \"Apple iMac\",\n        \"price\": 174999,\n        \"categories\": [\n            {\n                \"cid\": 2\n            }\n        ]\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/product/addAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"product",
+						"addAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product/list/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/product/list/1?page=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"product",
+						"list",
+						"1"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product/search?title=pro&page=0",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/product/search?title=pro&page=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"product",
+						"search"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "pro"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customer/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"ali@mail.com\",\n    \"password\": \"12345\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/customer/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"customer",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dummy/all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/dummy/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"dummy",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dummy/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/dummy/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"dummy",
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
