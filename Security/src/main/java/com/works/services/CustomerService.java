@@ -16,6 +16,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -28,6 +31,7 @@ public class CustomerService implements UserDetailsService {
 
     final CustomerRepository customerRepository;
     final PasswordEncoder passwordEncoder;
+    final DB db;
 
     public ResponseEntity register(Customer customer) {
         Optional<Customer> optionalCustomer = customerRepository.findByEmailEqualsIgnoreCase(customer.getEmail());
@@ -66,4 +70,20 @@ public class CustomerService implements UserDetailsService {
         }
         return list;
     }
+
+    // login
+    public boolean login( String email, boolean status ) {
+        try {
+            String sql = "select * from customer where email = ? and enable = ?";
+            PreparedStatement st = db.dataSource().getConnection().prepareStatement(sql);
+            st.setString(1, email);
+            st.setBoolean(2, status);
+            ResultSet rs = st.executeQuery();
+            return rs.next();
+        }catch (Exception ex) {
+            System.err.println("login error:" + ex);
+        }
+        return false;
+    }
+
 }

@@ -4,10 +4,7 @@ import com.works.entities.Customer;
 import com.works.services.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,6 +16,11 @@ public class CustomerRestController {
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody Customer customer) {
         return customerService.register(customer);
+    }
+
+    @PostMapping("/login")
+    public boolean login(@RequestParam String email, @RequestParam boolean enable) {
+        return customerService.login(email, enable);
     }
 
 }
